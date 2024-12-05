@@ -16,6 +16,7 @@ pipeline {
                     params.exuteTests
                 }
             }
+          }
               steps {
                   echo 'running the test'
           stage(deploy) {
@@ -29,5 +30,6 @@ pipeline {
           }
       }
   }
+}
 
   
