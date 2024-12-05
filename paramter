@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+  parameters {
+      choice(name: 'version' , choices:['1.1.0','1.2.0','1.3.0'])
+      booleanParam(name: 'exuteTests' , defaultValue: true)
+  }
+  stages {
+       stage("build") {
+           steps {
+               echo 'bulding the aplication...'
+           }
+        }
+        stage("test") {
+            when {
+                expression {
+                    params.exuteTests
+                }
+            }
+              steps {
+                  echo 'running the test'
+              }
+          }
+      }
+  }
+  
