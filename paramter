@@ -18,8 +18,16 @@ pipeline {
             }
               steps {
                   echo 'running the test'
+          stage(deploy) {
+              input {
+                  message " select the enviroment "
+                  ok " done "
+                  parameters{
+                      choice(name: 'env' , choices:['staging','dev','prod'])
+                  }       
               }
           }
       }
   }
+
   
