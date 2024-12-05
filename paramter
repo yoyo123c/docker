@@ -23,7 +23,7 @@ pipeline {
                   message " select the enviroment "
                   ok " done "
                   parameters{
-                      choice(name: 'env' , choices:['staging','dev','prod'])
+                      choice(name: 'envi' , choices:['staging','dev','prod'])
                   }       
               }
           }
