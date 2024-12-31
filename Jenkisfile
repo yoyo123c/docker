@@ -11,7 +11,7 @@ pipeline {
 
           }
       }
-     stage("build jar file") {
+     stage("build docker image") {
           steps {
               echo 'bulding the docker image...'
               withCredintials([usernamePassword(credintialsId: 'dockerhub' , passwordVariable: 'PASS' , usernameVarible: 'USER']) {
