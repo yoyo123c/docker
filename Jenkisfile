@@ -1,10 +1,26 @@
 pipeline {
     agent any 
+    tools{
+        maven 'maven3.9.9'
+         }
     stages {
-      stage("build") {
+      stage("build jar file") {
           steps {
               echo 'bulding the aplication...'
-              echo 'a7a the aplication...'
+              sh 'mvn package'
+
+          }
+      }
+     stage("build jar file") {
+          steps {
+              echo 'bulding the docker image...'
+              withCredintials([usernamePassword(credintialsId: 'dockerhub' , passwordVariable: 'PASS' , usernameVarible: 'USER']) {
+                  sh 'docker build -t yoyo123c/momo:roro-2.0 .'
+                  sh'docker login -u $USER -p $PASS
+                  sh 'docker push yoyo123c/momo:roro-2.0'
+
+              }
+              
 
           }
       }
