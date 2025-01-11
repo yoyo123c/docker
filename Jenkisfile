@@ -1,10 +1,7 @@
 pipeline {
     agent any 
-    tools{
-        maven 'maven'
-         }
     stages {
-      stage("build jar file") {
+      stage("build file") {
           steps {
               echo 'bulding the aplication...'
 
