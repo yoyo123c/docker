@@ -10,10 +10,10 @@ pipeline {
      stage("build docker image") {
           steps {
               echo 'bulding the docker image...'
-              withCredintials([usernamePassword(credintialsId: 'dockerhub' , passwordVariable: 'PASS' , usernameVariable: 'USER')]) {
-                  sh 'docker build -t yoyo123c/momo:roro-2.0 .'
-                  sh 'docker login -u $USER -p $PASS'
-                  sh 'docker push yoyo123c/momo:roro-2.0'
+             
+                  sh 'docker build -t mmoo991999/mmoo991999:1.1 .'
+                  sh 'echo "dckr_pat_WUrp85E8tHH0LQkLrM3YklOLEoo" | docker login -u $USER --password-stdin'
+                  sh 'docker push mmoo991999/mmoo991999:1.1'
 
               }
               
