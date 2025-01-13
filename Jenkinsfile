@@ -4,6 +4,11 @@ pipeline {
 
     stages {
         stage("bulding stage") {
+            when{
+                expression {
+                    BRACHE_NAME == 'patch-1'
+                }
+            }
             steps {
                 echo 'bulding the app'
             }
