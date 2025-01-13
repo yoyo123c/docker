@@ -1,6 +1,6 @@
 pipeline {
     parameters {
-        choice (name: 'version' , choices: [ '1.1.0 , 1.2.0 , 1.3.0' ])
+        choice (name: 'VERSION' , choices: ['1.1.0' , '1.2.0' , '1.3.0'])
         booleanParam (name: 'excuteTest' , defaultValue: true)
     }
     agent any
@@ -21,7 +21,7 @@ pipeline {
         }
         stage("Deploying Stage") {
             steps {
-                echo 'Deploying the app ${params.version}'
+                echo "Deploying the app ${params.VERSION}"
             }
         }
     }
