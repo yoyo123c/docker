@@ -1,24 +1,22 @@
-pipeline {
+pipline {
+
     agent any
 
-   
-
     stages {
-        stage('clone repo') {
+        stage("bulding stage") {
             steps {
-                sh '''
-                    git clone https://github.com/omarmohamed7i/docker.git
-                '''
+                echo 'bulding the app'
             }
         }
-        stage('build') {
+         stage("testing stage") {
             steps {
-                sh '''
-                    cd docker 
-                    docker build -t gad .
-                    docker run -d -p 10000:80 gad
-                '''
+                echo 'testing the app'
             }
         }
-    }
+             stage("deploying stage") {
+                steps {
+                   echo 'deploying the app'
+        }
+     }
+   }
 }
