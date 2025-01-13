@@ -1,14 +1,14 @@
 pipeline {
     parameters {
         choice (name: 'version' , choices: [ '1.1.0 , 1.2.0 , 1.3.0' ])
-        booleanParam (name: 'excutetest' , deafaultValue: true)
+        booleanParam (name: 'excuteTest' , deafaultValue: true)
     }
     agent any
 
     stages {
         stage("Building Stage") {
             when {
-                expression { param.excutetest == true }
+                expression { param.excuteTest == true }
             }
             steps {
                 echo 'Building the app'
