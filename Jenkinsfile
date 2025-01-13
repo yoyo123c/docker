@@ -8,14 +8,10 @@ pipeline {
                echo "Current branch: ${env.BRANCH_NAME}"
             }
 
-           when {
-                 expression { env.BRANCH_NAME == 'patch-1' || env.BRANCH_NAME == 'main' }
-           }
-
-                   
-               
+            when {
+              expression { env.BRANCH_NAME.trim() == 'patch-1' || env.BRANCH_NAME.trim() == 'main' }
             }
-            steps {
+            
                 echo 'bulding the app'
             }
         }
