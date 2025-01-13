@@ -5,9 +5,9 @@ pipeline {
     stages {
         stage("bulding stage") {
             when {
-                expression {
-                    BRANCH_NAME == 'patch-1'
-                }
+                 expression { env.BRANCH_NAME == 'main' }
+                   
+               
             }
             steps {
                 echo 'bulding the app'
