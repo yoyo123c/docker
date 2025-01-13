@@ -1,28 +1,25 @@
 pipeline {
-
     agent any
 
     stages {
-        stage("bulding stage") {
-            steps {
-               echo "Current branch: ${env.BRANCH_NAME}"
-            }
-
+        stage("Building Stage") {
             when {
-              expression { env.BRANCH_NAME.trim() == 'patch-1' || env.BRANCH_NAME.trim() == 'main' }
+                expression { env.BRANCH_NAME?.trim() == 'patch-1' || env.BRANCH_NAME?.trim() == 'main' }
             }
-            
-                echo 'bulding the app'
-            }
-        }
-         stage("testing stage") {
             steps {
-                echo 'testing the app'
+                echo "Current branch: ${env.BRANCH_NAME}"
+                echo 'Building the app'
             }
         }
-             stage("deploying stage") {
-                steps {
-                   echo 'deploying the app'
+        stage("Testing Stage") {
+            steps {
+                echo 'Testing the app'
+            }
         }
-     }
-   }
+        stage("Deploying Stage") {
+            steps {
+                echo 'Deploying the app'
+            }
+        }
+    }
+}
