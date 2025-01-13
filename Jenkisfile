@@ -1,27 +1,22 @@
-pipeline {
-    agent any 
+pipline {
+
+    agent any
+
     stages {
-      stage("build file") {
-          steps {
-              echo 'bulding the aplication...'
-
-          }
-      }
-     stage("build docker image") {
-          steps {
-              echo 'bulding the docker image...'
-             
-                  sh 'docker build -t mmoo991999/mmoo991999:1.1 .'
-                  sh 'echo "dckr_pat_WUrp85E8tHH0LQkLrM3YklOLEoo" | docker login -u $USER --password-stdin'
-                  sh 'docker push mmoo991999/mmoo991999:1.1'
-
-              }
-              
-
-          }
-      }
-
-    
-      }
-    
-
+        stage("bulding stage") {
+            steps {
+                echo 'bulding the app'
+        }
+            }
+         stage("testing stage") {
+            steps {
+                echo 'testing the app'
+        }
+            }
+             stage("deploying stage") {
+                steps {
+                   echo 'deploying the app'
+        }
+     }
+   }
+}
