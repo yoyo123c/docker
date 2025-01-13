@@ -1,13 +1,16 @@
 pipeline {
+    parameters {
+        choice (name: 'version' , choices: [ 1.1.0 , 1.2.0 , 1.3.0 ])
+        booleanParam (name:'excutetest' , deafaultValue: true)
+    }
     agent any
 
     stages {
         stage("Building Stage") {
             when {
-                expression { env.BRANCH_NAME?.trim() == 'patch-1' || env.BRANCH_NAME?.trim() == 'main' }
+                expression { param.excutetest == true }
             }
             steps {
-                echo "Current branch: ${env.BRANCH_NAME}"
                 echo 'Building the app'
             }
         }
@@ -18,7 +21,7 @@ pipeline {
         }
         stage("Deploying Stage") {
             steps {
-                echo 'Deploying the app'
+                echo 'Deploying the app ${param.version}'
             }
         }
     }
