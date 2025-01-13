@@ -4,8 +4,14 @@ pipeline {
 
     stages {
         stage("bulding stage") {
-            when {
-                 expression { env.BRANCH_NAME == 'patch-1' || env.BRANCH_NAME == 'main'   }
+            steps {
+               echo "Current branch: ${env.BRANCH_NAME}"
+            }
+
+           when {
+                 expression { env.BRANCH_NAME == 'patch-1' || env.BRANCH_NAME == 'main' }
+           }
+
                    
                
             }
