@@ -20,8 +20,17 @@ pipeline {
             }
         }
         stage("Deploying Stage") {
+            input {
+                message "select your env"
+                ok "done"
+                parameters{
+                    choice (name: 'ENV' , choices: ['windows' , 'linux' , 'other'])
+                }
+                
+            }
             steps {
                 echo "Deploying the app ${params.VERSION}"
+                echo "Deploying the app ${params.ENV}"
             }
         }
     }
