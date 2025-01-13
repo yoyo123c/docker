@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage("bulding stage") {
             when {
-                 expression { env.BRANCH_NAME == 'main' }
+                 expression { env.BRANCH_NAME == 'patch-1' }
                    
                
             }
